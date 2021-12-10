@@ -17,7 +17,7 @@
           <a id="logo" href="./index.html"><img id="logo" src="./images/logo.jpg" alt="Amethyst Art Logo"></a>
         </div>
         <div class="column">
-          <ul class="navbar">
+          <ul id="nav" class="navbar">
             <li><a href="./about.html">About Me</a></li>
             <li><a href="./phys.html">Physical</a></li>
             <li><a href="./digi.html">Digital</a></li>
@@ -42,6 +42,10 @@
       gallery.innerHTML += "<img onclick='slides(" + i +")' src='" + piece + "'>";
     }
     function slides(current) {
+
+      if (window.screen.width < 500) {
+        return;
+      }
       gallery.style.display = "none";
       slider.innerHTML = "";
       if (current > 0) {
