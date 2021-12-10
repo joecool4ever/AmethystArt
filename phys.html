@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script>
+      var physCount = 15;
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Amethyst Art: Physical Pieces</title>
+    <link rel="stylesheet" href="./master.css">
+    <link rel="icon" href="./images/logo.jpg" type="image/x-icon">
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <div class="row">
+        <div class="brand">
+          <a id="logo" href="./index.html"><img id="logo" src="./images/logo.jpg" alt="Amethyst Art Logo"></a>
+        </div>
+        <div class="column">
+          <ul class="navbar">
+            <li><a href="./about.html">About Me</a></li>
+            <li><a href="./phys.html">Physical</a></li>
+            <li><a href="./digi.html">Digital</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="gallery">
+          <!-- images will be put in here -->
+      </div>
+      <div id="slides" class="row">
+        <!-- slideshow will be placed here -->
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var slide = new Array();
+    var gallery = document.getElementById("gallery");
+    var slider = document.getElementById("slides");
+    for (var i=0; i <= physCount; i++) {
+      var piece = "./art/physical" + i + ".jpg";
+      slide[i] = piece;
+      gallery.innerHTML += "<img onclick='slides(" + i +")' src='" + piece + "'>";
+    }
+    function slides(current) {
+      gallery.style.display = "none";
+      slider.innerHTML = "";
+      if (current > 0) {
+        slider.innerHTML += "<img class='slides side' onclick='slides(" + current + "- 1)' src='" + slide[current-1] + "'>";
+      }
+      slider.innerHTML += "<img class='slides' onclick='revert()' src='" + slide[current] + "'>";
+      if (current <= physCount) {
+        slider.innerHTML += "<img class='slides side' onclick='slides(" + current + " + 1)' src='" + slide[current+1] + "'>";
+      }
+    }
+    function revert() {
+      gallery.style.display = "block";
+      slider.innerHTML = "";
+    }
+  </script>
+</html>
